@@ -163,6 +163,7 @@ extension ApplePayHandler : TPDApplePayDelegate {
   func tpdApplePay(_ applePay: TPDApplePay!, didReceivePrime prime: String!, withExpiryMillis expiryMillis: Int, with cardInfo: TPDCardInfo!, withMerchantReferenceInfo merchantReferenceInfo: [AnyHashable : Any]!) {
     print("Apple Pay did receive prime: \(prime ?? "")")
     onApplePayResult?(ApplePayPaymentResult(success: true, status: nil, message: "Apple Pay payment was successful.", prime: prime))
+    applePay.showPaymentResult(true)
   }
   
   func tpdApplePay(_ applePay: TPDApplePay!, didSuccessPayment result: TPDTransactionResult!) {
